@@ -36,6 +36,10 @@
 
     /* Number of cards in a row */
     --card-numbers: 3;
+
+    /* Transition for :hover & :focus */
+    --transition-time: 250ms;
+    --transition-func: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Standard features */
@@ -162,6 +166,8 @@ img {
 
 .black-color-logo{
     color: var(--full-black-text);
+
+    transition: color var(--transition-time) var(--transition-func);
 }
 
 .black-color-logo:hover,
@@ -172,16 +178,18 @@ img {
 /* Header - navigator */
 
 .site-nav{
-    display: flex;    
+    display: flex; 
     gap: 50px;
 
-    color: var(--gray-black-text); 
+    color: var(--gray-black-text);     
 }
 
 .site-nav .link,
 .contact .link{
     padding-top: 32px;
     padding-bottom: 32px;
+
+    transition: color var(--transition-time) var(--transition-func);
 }
 
 
@@ -191,6 +199,26 @@ img {
 .contact .link:hover,
 .contact .link:focus{
     color: var(--blue-color);
+}
+
+/* .site-nav{} */
+
+.current{
+    position: relative;
+}
+
+.current::after{
+    position: absolute;
+    content: '';
+    
+    display: block;
+    bottom: 0;
+    
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+
+    background-color: currentColor;
 }
 
 /* Header - contacts */
@@ -229,6 +257,8 @@ img {
 
 .white-text-logo{
     color: var(--full-white-text);
+
+    transition: color var(--transition-time) var(--transition-func);
 }
 
 .white-text-logo:hover,
@@ -259,21 +289,25 @@ img {
 .dev-adrress{
     padding: 5px 0;
     color: var(--full-white-text);
+
+    transition: color var(--transition-time) var(--transition-func);
 }
 
 .dev-adrress:hover,
 .dev-adress:focus {
-    color: var(--gray-text)
+    color: var(--gray-text);
 }
 
 .dev-contact{
     padding: 5px 0;
-    color: rgba(255, 255, 255, 0.6);    
+    color: rgba(255, 255, 255, 0.6); 
+    
+    transition: color var(--transition-time) var(--transition-func);
 }
 
 .dev-contact:hover,
 .dev-contact:focus{
-    color: var(--full-white-text)
+    color: var(--full-white-text):
 }
 
 .conection-text{
@@ -365,6 +399,8 @@ img {
     background-color: var(--blue-color);
 
     cursor: pointer;
+
+    transition: background-color var(--transition-time) var(--transition-func);
 }
 
 .order-button:hover,
@@ -411,6 +447,30 @@ img {
 /* Work list and team sections*/
 .work{
     padding-top: 0;
+}
+
+.work-thumb {    
+    position: relative;
+}
+
+.work-direction{
+    display: inline-block;
+
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 70px;
+    
+    font-weight: 700;    
+    line-height: calc(16 / 14);
+    text-align: center;
+    text-transform: uppercase;    
+    color: var(--full-white-text);
+
+    padding-top: 27px;
+    padding-bottom: 27px;
+    
+    background-color: rgba(47, 48, 58, 0.8);
 }
 
 .team{
@@ -484,9 +544,11 @@ img {
     justify-content: center;
     width: 44px;
     height: 44px;
-    border-radius: var(--full-round);
+    border-radius: var(--full-round);    
 
     fill: var(--gray-company-color);
+
+    transition: fill var(--transition-time) var(--transition-func), background-color var(--transition-time) var(--transition-func);
 }
 
 .social-link:hover,
@@ -519,6 +581,8 @@ img {
     border: 1px solid currentColor;
     border-radius: var(--radius);
     color: var(--gray-company-color);
+
+    transition: color var(--transition-time) var(--transition-func);
 }
 
 .client-link:hover,
@@ -569,6 +633,8 @@ img {
     background-color: var(--nearby-white);
 
     cursor: pointer;
+
+    transition: color var(--transition-time) var(--transition-func), background-color var(--transition-time) var(--transition-func), box-shadow var(--transition-time) var(--transition-func);
 }
 
 .portfolio-buttons:hover,
@@ -582,12 +648,47 @@ img {
 }
 
 .portfolio-link{
-    display: block;    
+    display: block;
+    
+    transition: box-shadow var(--transition-time) var(--transition-func);
 }
 
 .portfolio-link:hover,
 .portfolio-link:focus{
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.portfolio-thumb{
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-overlay{
+    display: flex;
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+    transform: translateY(0%);
+    transition: transform var(--transition-time) var(--transition-func);
+
+    background-color: rgba(33, 150, 243, 0.9);
+}
+
+.portfolio-link:hover .portfolio-overlay,
+.portfolio-link:focus .portfolio-overlay{
+    transform: translateY(-100%);
+}
+
+.portfolio-discr{
+    padding-left: 24px;
+    padding-right: 24px;
+    align-self: center;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.56;    
+    color: var(--full-white-text);
 }
 
 
