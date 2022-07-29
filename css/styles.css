@@ -216,7 +216,7 @@ img {
     content: '';
     
     display: block;
-    bottom: 0;
+    bottom: -1px;
     
     height: 4px;
     width: 100%;
@@ -616,7 +616,7 @@ Model windows and overlay
     visibility: visible;
     pointer-events: initial;
 
-    transition: opacity var(--animation-time);
+    transition: opacity var(--animation-time), visibility var(--animation-time);
 }
 
 .backdrop.is-hidden{
